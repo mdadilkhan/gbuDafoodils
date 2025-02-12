@@ -54,7 +54,7 @@ const Header = () => {
         title="Offline 30 hours internship fee structure"
   
       >
-        <Card title={<span>Individual<br />fee</span>} price={3000} student={{min:1,max:1}}/>
+        <Card title={<span>Individual<br />fee</span>} price={2200} student={{min:1,max:1}}/>
 
       </Dialogbox>
 

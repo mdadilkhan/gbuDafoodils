@@ -10,13 +10,66 @@ import ped4 from "../assets/ped4.svg";
 import outcome from "../assets/outcomes.svg";
 import outcome2 from "../assets/courseImg.svg";
 import CourseStructure from "../assets/CourseStructure.svg";
+import Question from "../assets/Question.svg"
+const pedagogy = [
+  {
+    image: "https://corportal.s3.ap-south-1.amazonaws.com/jindalpedagogy/blended-learning.svg",
+    title: "Blended Learning",
+    description: "Flexible learning through online and offline formats, including in-person, teletherapy, video/audio/chat-based sessions."
+  },
+  {
+    image: "https://corportal.s3.ap-south-1.amazonaws.com/jindalpedagogy/case-based.svg",
+    title: "Role-Playing and Simulations",
+    description: "Realistic client interactions through structured role-plays and mock therapy sessions."
+  },
+  {
+    image: "https://corportal.s3.ap-south-1.amazonaws.com/jindalpedagogy/collaborative.svg",
+    title: "Case-Based Learning",
+    description: "Application of theories and diagnostic techniques to real-life scenarios."
+  },
+  {
+    image: "https://corportal.s3.ap-south-1.amazonaws.com/jindalpedagogy/Community.svg",
+    title: "Experiential Learning",
+    description: "Hands-on practice in clinical interviewing, diagnostic assessments, and intervention planning."
+  },
+  {
+    image: "https://corportal.s3.ap-south-1.amazonaws.com/jindalpedagogy/reflective.svg",
+    title: "Reflective Learning",
+    description: "Journaling, feedback sessions, and peer reviews to build self-awareness and critical thinking."
+  },
+  {
+    image: "https://corportal.s3.ap-south-1.amazonaws.com/jindalpedagogy/Feedback.svg",
+    title: "Guided Reading and Integration",
+    description: "Engaging with research papers, case studies, and evidence-based practices."
+  },
+  {
+    image: "https://corportal.s3.ap-south-1.amazonaws.com/jindalpedagogy/Feedback.svg",
+    title: "Feedback-Oriented Assessment",
+    description: "Continuous assessment with constructive feedback for skill refinement."
+  },
+  {
+    image: "https://corportal.s3.ap-south-1.amazonaws.com/jindalpedagogy/collaborative.svg",
+    title: "Collaborative Learning",
+    description: "Group discussions, team projects, and peer mentoring to develop holistic perspectives."
+  }
+];
+
 
 const Home = () => {
-  
   const [isDialogOpen, setDialogOpen] = useState(false);
   const [selectedSection, setSelectedSection] = useState("learning");
   const [openSection, setOpenSection] = useState(0);
+  const[isModalOpen,setIsModal]=useState(false);
+  const [currentMethod,setCurrentMethod]=useState();
+  const showModal=(data)=>{
+    setCurrentMethod(data);
+    setIsModal(true);
+  }
+  const handleCancel=()=>{
 
+    setIsModal(false);
+
+  }
   const toggleSection = (index) => {
     setOpenSection(openSection === index ? null : index);
   };
@@ -24,35 +77,43 @@ const Home = () => {
   const courses = [
     {
       step: "01",
-      title: "Foundations of Counseling skills",
+      title: "Foundations of Clinical and Counseling Psychology",
       description: [
-        "Overview of Counseling: Definition, Scope, and Purpose",
-        "Roles & Responsibilities of a Counselor",
-        "Insights into the therapeutic alliance, case conceptualization",
+        "Overview of both fields: similarities, differences, and applications.",
+        "Client-centered approach and ethical considerations.",
       ],
     },
     {
       step: "02",
-      title: "Understanding self & professional practice",
+      title: "Micro-skills of Counseling",
       description: [
-        " Importance of Self-Reflection in Counseling",
-        "Tools & Techniques for Reflective Practice",
-        "⁠Receiving  & utilising Supervision",
-        "⁠Managing Personal Reactions & Countertransference",
-        "Ethical Decision-Making Models",
-        "Confidentiality, Informed Consent, and Client Rights",
-        "Dealing with Ethical Dilemmas",
-        "Professional Boundaries and Dual Relationships",
-        "Cultural Competence and Sensitivity in Counseling",
+        "Techniques for building rapport and gathering comprehensive client information.",
+        "Understanding the different skill sets used by a therapist and application of skills in a practical setting.",
       ],
     },
     {
       step: "03",
-      title: "Whisper catchers: tuning into the unspoken",
+      title: "Clinical Interviewing",
       description: [
-        "Tech-based activities to Understand  Therapeutic Alliance",
-        "Observation of Counseling Sessions via  Case Verbatims",
-        "Handling silence in sessions",
+        "Structured and unstructured interviews.",
+        "Understanding the concepts of case history & MSE.",
+        "Structure for case conceptualization and reports based on the same.",
+      ],
+    },
+    {
+      step: "04",
+      title: "Cultural Competency and Diversity in Therapy",
+      description: [
+        "Working with diverse populations and tailoring interventions accordingly.",
+        "Addressing biases and developing cultural sensitivity.",
+      ],
+    },
+    {
+      step: "05",
+      title: "Assessments used in Different Settings",
+      description: [
+        "Understanding the use of testing, administration, and interpretation.",
+        "Documentation of reports and result analysis.",
       ],
     },
   ];
@@ -89,26 +150,34 @@ const Home = () => {
           </h1>
           <div className="mt-8 max-w-screen-md ">
             <h6 className="text-tertiary font-sans text-[12px] sm:text-[18px] font-normal leading-[25px]">
-              This course provides Undergraduate psychology students with a
-              thorough introduction to essential counseling skills for effective
-              practice. Combining theory and experiential learning, students
-              will explore therapeutic relationships, case conceptualization,
-              ethics, and self-reflection, with a strong focus on practical
-              application through multimedia scenarios, role-plays, and
-              reflective exercises.
+              This psychology internship helps students build a strong
+              foundation in counseling microskills, clinical interviewing, and
+              basic therapeutic techniques. It combines theory with hands-on
+              experience to prepare students for roles in mental health
+              settings. The program emphasizes essential skills, ethical
+              awareness, cultural sensitivity, and modern approaches to mental
+              well-being support..
             </h6>
           </div>
         </div>
-        <div className="flex justify-evenly sm:flex-row flex-col items-center absolute bottom-0 sm:h-[100px] left-[10%] sm:left-[10%] top-[90%] w-[80%] h-max p-4 bg-white" style={{boxShadow:"0px -3px 16px 0px rgba(0, 0, 0, 0.17)", borderRadius:"15px"}}>
+        <div
+          className="flex justify-evenly sm:flex-row flex-col items-center absolute bottom-0 sm:h-[100px] left-[10%] sm:left-[10%] top-[90%] w-[80%] h-max p-4 bg-white"
+          style={{
+            boxShadow: "0px -3px 16px 0px rgba(0, 0, 0, 0.17)",
+            borderRadius: "15px",
+          }}
+        >
           <div className="border-b sm:border-b-0 sm:border-r border-[#614298] w-[90%] sm:w-[33%] pl-8 pr-4 sm:mb-0 mb-4">
             <p className="font-sans text-[16px] sm:text-[32px] font-extrabold text-primary leading-[43.65px] tracking-[0.005em] text-left">
               30 hours
             </p>
-            <p className="text-primary text-[12px] sm:text-[16px] mb-2">Intensive Offline Paid Training</p>
+            <p className="text-primary text-[12px] sm:text-[16px] mb-2">
+              Intensive Offline Paid Training
+            </p>
           </div>
           <div className="flex items-center border-b sm:border-b-0 sm:border-r border-[#614298] w-[90%] sm:w-[33%] pl-8 pr-4 sm:mb-0 mb-4 h-[100%]">
             <p className="font-sans text-primary text-[16px] sm:text-[32px] font-extrabold leading-[43.65px] tracking-[0.005em] text-left">
-              3 Modules
+              5 Modules
             </p>
             {/* <p className="text-primary">Intensive Offline Paid Training</p> */}
           </div>
@@ -119,12 +188,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-
-
-
-
-
 
       <div className="sticky top-[80px] flex flex-wrap justify-start items-center gap-6 mt-[15rem] sm:mt-20 px-6 sm:px-12 md:px-12 bg-white  ">
         <button
@@ -191,21 +254,35 @@ const Home = () => {
             </p>
             <ul className="list-disc ml-6 mt-2 space-y-2 text-[#696984]">
               <li className="text-[#696984]">
-                Establish and sustain effective therapeutic relationships with
-                clients.
+                The goals, processes, and stages of both clinical and counseling
+                psychology..
               </li>
               <li className="text-[#696984]">
-                Accurately conceptualize cases and maintain detailed,
-                confidential session documentation.
+                The roles and responsibilities of psychologists in different
+                settings.
               </li>
               <li className="text-[#696984]">
-                Apply self-reflection techniques to improve personal and
-                professional development.
+                Client-centered approaches to prioritize clients’ needs,
+                perspectives, and strengths.
               </li>
               <li className="text-[#696984]">
-                Utilize role-play and case scenarios to practice and refine
-                their counseling skills in a controlled environment, preparing
-                them for real-world counseling settings.
+                Proficiency in structured and unstructured clinical interviewing
+                techniques.
+              </li>
+              <li className="text-[#696984]">
+                Ethical and legal considerations in a therapeutic relationship &
+                setting.{" "}
+              </li>
+              <li className="text-[#696984]">
+                The importance of self-awareness, emotional regulation, and
+                reflective practice.{" "}
+              </li>
+              <li className="text-[#696984]">
+                Techniques in active listening, empathy, conflict resolution,
+                goal-setting, and behavioral modification.{" "}
+              </li>
+              <li className="text-[#696984]">
+                Hands-on experience in documentation & case writing.{" "}
               </li>
             </ul>
           </div>
@@ -215,18 +292,17 @@ const Home = () => {
             <h2 className="text-3xl font-bold text-primary mb-4">Skills:</h2>
             <div className="flex flex-wrap gap-2">
               {[
-                "Empathetic Listening",
-                "Analytical Case Conceptualization",
-                "Ethical Decision-Making",
-                "Confidential Documentation",
-                "Reflective Self-Awareness",
-                "Effective Communication",
-                "Relationship-Building",
-                "Practical Problem-Solving",
+                "Clinical interviewing & rapport building",
+                "Active listening & empathy",
+                "Diagnostic skills & treatment planning",
+                "Cultural sensitivity & ethical decision-making",
+                "Case documentation & report writing",
+                "Emotional regulation & self-awareness",
+                "Clinical assessment & scoring",
               ].map((skill) => (
                 <span
                   key={skill}
-                  className="bg-[#F5F5F5] text-[#7355A8] text-sm font-medium px-4 py-2 rounded-md"
+                  className="bg-[#F5F5F5] text-[#7355A8] text-[1.2rem] font-medium px-4 py-2 rounded-md"
                 >
                   {skill}
                 </span>
@@ -237,58 +313,85 @@ const Home = () => {
           {/* Learning Methods Section */}
           <div className="flex flex-col gap-4 mb-8" id="pedagogy">
             <h2 className="text-3xl font-bold text-primary mb-4">Pedagogy:</h2>
-            <div className="flex flex-col sm:flex-row" style={{boxShadow:"0px -3px 16px 0px rgba(0, 0, 0, 0.17)", borderRadius:"15px"}}>
-              {[
-                {
-                  img: ped1,
-                  title: "Interactive role-plays",
-                  description: "Simulating therapeutic environments",
-                },
-                {
-                  img: ped2,
-                  title: "Case Discussions",
-                  description: "Exploring diverse scenarios",
-                },
-                {
-                  img: ped3,
-                  title: "Project-based learning",
-                  description:
-                    "Hands-on practice with tools and book references",
-                },
-                {
-                  img: ped4,
-                  title: "Reflective activities",
-                  description: "For deeper understanding",
-                },
-              ].map((method) => (
+            <div
+              className="flex flex-wrap flex-col sm:flex-row bg-[#FCFAFF]"
+              style={{
+                boxShadow: "0px -3px 16px 0px rgba(0, 0, 0, 0.17)",
+                borderRadius: "15px",
+              }}
+            >
+              {pedagogy?.map((method) => (
                 <div
                   key={method.title}
-                  className="flex p-4 rounded-lg text-left gap-4 sm:gap-1"
+                  className="flex items-center p-4 rounded-lg text-left sm:gap-2 w-full sm:w-1/4 justify-center"
                 >
-                  <img src={method.img} alt="" className="sm:w-[66px] sm:h-[66px] w-[48px] h-[48px]"/>
+                  <img
+                    src={method?.image}
+                    alt={method.title}
+                    className="sm:w-[66px] sm:h-[66px] w-[48px] h-[48px]"
+                  />
+                  <h4 className="font-bold text-[1.4rem] font-nunito w-[40%]">
+                    {method.title}
+                  </h4>
                   <div>
-                    <h4 className="font-semibold text-lg">{method.title}</h4>
-                    <p className="text-sm mt-2">{method.description}</p>
+                    <div
+                      size={24}
+                      onClick={() => showModal(method)}
+                      className="cursor-pointer text-purple-600 hover:text-purple-800"
+                    >
+                    <img className="w-[2rem] h-[2rem] rounded-full" src={Question}/>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
+            {/* Modal Component */}
+            {isModalOpen && (
+  <div 
+    className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+  >
+    {/* Modal Container */}
+    <div 
+      className="bg-[#FCFAFF] rounded-lg p-5 shadow-lg max-w-lg w-full relative"
+    >
+      {/* Close Button */}
+      <span
+        onClick={handleCancel}
+        className="absolute top-3 right-3 text-lg text-gray-600 hover:text-gray-800 cursor-pointer"
+      >
+        &#10005;
+      </span>
+
+      {/* Modal Title */}
+      <h2 className="text-xl font-semibold text-gray-800">
+        {currentMethod?.title}
+      </h2>
+
+      {/* Modal Description */}
+      <p className="text-gray-600 mt-2">{currentMethod?.description}</p>
+    </div>
+  </div>
+)}
+
           </div>
 
           {/* Course Structure Section */}
-          <div className="mb-8 w-full flex flex-col sm:flex-row-reverse" id="course">
+          <div
+            className="mb-8 w-full flex flex-col sm:flex-row-reverse"
+            id="course"
+          >
             <div className="w-full sm:w-1/2 p-4 sm:block hidden">
-              <img src={outcome} alt="" className="w-full sm:w-[90%]"/>
+              <img src={outcome} alt="" className="w-full sm:w-[90%]" />
             </div>
             <h2 className="text-[20px] sm:text-3xl font-bold text-primary mb-4 block sm:hidden">
-                Course Structure
-              </h2>
+              Course Structure
+            </h2>
             <div className="sm:w-1/2 w-full">
               <h2 className="text-3xl font-bold text-primary mb-4 sm:block hidden">
                 Course Structure
               </h2>
               <div className="w-full p-4 block sm:hidden sm:mb-4 mb-0">
-              <img src={outcome2} alt="" />
+                <img src={outcome2} alt="" />
               </div>
               <div className="space-y-6">
                 {courses.map((course, index) => (
@@ -325,7 +428,9 @@ const Home = () => {
                     {openSection === index && (
                       <ul className="ml-4 sm:ml-16 mt-2 text-sm text-gray-600 list-disc list-inside">
                         {course.description.map((point, i) => (
-                          <li key={i} className="text-[14px]">{point}</li>
+                          <li key={i} className="text-[14px]">
+                            {point}
+                          </li>
                         ))}
                       </ul>
                     )}
@@ -341,61 +446,44 @@ const Home = () => {
               <img src={CourseStructure} alt="" />
             </div>
             <h2 className="text-[20px] sm:text-3xl font-bold text-primary mb-4 block sm:hidden">
-                Outcomes:
-              </h2>
+              Outcomes:
+            </h2>
             <div className="w-full sm:w-1/2">
               <h2 className="text-3xl font-bold text-primary mb-4 sm:block hidden">
                 Outcomes:
               </h2>
-              <div className="w-full sm:w-1/2 p-4 block sm:hidden">
-              <img src={CourseStructure} alt="" />
-            </div>
-              <ul className="list-disc ml-6 space-y-2">
+              <div className="w-full sm:w-1/2  p-4 block sm:hidden">
+                <img src={CourseStructure} alt="" />
+              </div>
+              <ul className="list-disc ml-6 space-y-2 text-[1.6rem]">
                 <li>
                   <span className="font-bold">
-                    Real-World Therapy Experience:{" "}
+                    Competence in Clinical and Counseling Techniques:{" "}
                   </span>
-                  Gain firsthand exposure to the dynamics of a therapy space,
-                  learning to create a safe and supportive environment for
-                  clients.
+                  Students will master skills in client-centered therapy,
+                  diagnostics, and interventions tailored to diverse
+                  populations.
                 </li>
                 <li>
                   <span className="font-bold">
-                    Client Interaction Mastery:{" "}
-                  </span>{" "}
-                  Develop the ability to effectively engage with clients, build
-                  trust, and navigate complex emotional landscapes.
-                </li>
-                <li>
-                  <span className="font-bold">Advanced Case Handling: </span>{" "}
-                  Learn to analyze and conceptualize diverse case scenarios,
-                  enhancing decision-making and problem-solving skills.
-                </li>
-                <li>
-                  <span className="font-bold">Role-Play Proficiency: </span>{" "}
-                  Refine counseling techniques through role-play exercises,
-                  simulating real-life situations to build confidence and
-                  adaptability. .
-                </li>
-                <li>
-                  <span className="font-bold">
-                    Ethical and Professional Excellence:{" "}
+                    Enhanced Diagnostic and Treatment Planning Abilities:{" "}
                   </span>
-                  Internalize ethical principles and best practices, ensuring
-                  high standards in client care and professional conduct.
+                  Proficiency in using DSM-5 and ICD-11 to accurately assess and
+                  classify mental health conditions.
                 </li>
                 <li>
                   <span className="font-bold">
-                    Enhanced Reflective Practice:{" "}
-                  </span>{" "}
-                  Cultivate self-awareness and reflective abilities, essential
-                  for continuous personal and professional growth.
+                    Development of Strong Therapeutic Skills:{" "}
+                  </span>
+                  Mastery in active listening, rapport building, goal-setting,
+                  and behavioral interventions.
                 </li>
                 <li>
-                  <span className="font-bold">Competitive Edge:</span> Acquire a
-                  comprehensive skill set that sets you apart from peers,
-                  positioning you as a capable and prepared mental health
-                  professional ready to excel in the field.
+                  <span className="font-bold">
+                    Stronger Self-Awareness and Emotional Regulation:{" "}
+                  </span>
+                  Capacity for reflective practice, professional growth, and
+                  resilience in challenging mental health settings.
                 </li>
               </ul>
             </div>
@@ -418,15 +506,16 @@ const Home = () => {
                 fee
               </span>
             }
-            price={3000}
+            price={2200}
             student={{ min: 1, max: 1 }}
           />
-        
         </Dialogbox>
       </div>
       <div className="flex justify-center items-center p-4 sm:w-[50%] w-[90%] mx-auto border border-solid border-border rounded-md bg-[#FCFAFF]">
         <div className="flex items-center space-x-4">
-          <span className="font-bold text-[16px] sm:text-3xl text-[#7355A8]">MODE</span>
+          <span className="font-bold text-[16px] sm:text-3xl text-[#7355A8]">
+            MODE
+          </span>
           <label className="flex items-center space-x-1">
             <input
               type="radio"
@@ -434,7 +523,9 @@ const Home = () => {
               className="appearance-none h-4 w-4 border border-#7355A8] rounded-full checked:bg-[#7355A8] checked:border-transparent focus:outline-none"
               defaultChecked
             />
-            <span className="text-[#7355A8] text-[12px] sm:text-2xl font-light">Online</span>
+            <span className="text-[#7355A8] text-[12px] sm:text-2xl font-light">
+              Online
+            </span>
           </label>
           <label className="flex items-center space-x-1">
             <input
@@ -443,12 +534,16 @@ const Home = () => {
               className="appearance-none h-4 w-4 border border-#7355A8] rounded-full checked:bg-[#7355A8] checked:border-transparent focus:outline-none"
               defaultChecked
             />
-            <span className="text-[#7355A8] text-[12px] sm:text-2xl font-light">Offline</span>
+            <span className="text-[#7355A8] text-[12px] sm:text-2xl font-light">
+              Offline
+            </span>
           </label>
           <span className="font-bold text-[#7355A8] ml-8 text-[16px] sm:text-3xl">
             BATCHES
           </span>
-          <span className="text-[#7355A8] text-[12px] sm:text-2xl font-light">Weekend</span>
+          <span className="text-[#7355A8] text-[12px] sm:text-2xl font-light">
+            Weekend
+          </span>
         </div>
       </div>
       <div className="text-center my-8">
